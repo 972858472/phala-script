@@ -6,7 +6,7 @@ isAlarm=0
 
 # shellcheck disable=SC2162
 read -p "prb系统中Lifecycle的peerId：" peerId
-if [ -z "$peerId" ]; then peerId=QmXDjWGGEHmrDUKBX1uaGeZXuhs9AkNQLS9KGQg3E42D4c; fi
+if [ -z "$peerId" ]; then peerId=QmXDjWGGEHmrDUKBX1uaGfeZXu466hs9ALS9KGQg3E42D4c; fi
 # shellcheck disable=SC2162
 read -p "异常报警邮箱：" alarmMail
 if [ -z "$alarmMail" ]; then alarmMail=972858472@qq.com; fi
