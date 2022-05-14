@@ -54,7 +54,7 @@ while true; do
     uuid=$(echo "$worker" | jq -r '.worker.uuid')
     state=$(echo "$worker" | jq -r '.status')
 
-    if [ "$state" != "S_MINING" ]; then
+    if [ "$state" != "S_MINING" -a "$state" != "S_SYNCHING" ]; then
       if [ $key -eq 1 ]; then
         restart "$uuid"
       fi
