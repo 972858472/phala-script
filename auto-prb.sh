@@ -55,9 +55,7 @@ while true; do
     state=$(echo "$worker" | jq -r '.status')
 
     if [ "$state" != "S_MINING" -a "$state" != "S_SYNCHING" ]; then
-      if [ $key -eq 1 ]; then
-        restart "$uuid"
-      fi
+      restart "$uuid"
       workerArray[$key]=$(expr ${workerArray[$key]} + 1)
     else
       workerArray[$key]=0
