@@ -52,9 +52,10 @@ while true; do
   for key in $(echo "$workerStatusList" | jq 'keys|.[]'); do
     worker=$(echo "$workerStatusList" | jq ".[$key]")
     uuid=$(echo "$worker" | jq -r '.worker.uuid')
-    state=$(echo "$worker" | jq -r '.paraBlockDispatchedTo')
+    state=$(echo "$worker" | jq -r '.status')
+    height=$(echo "$worker" | jq -r '.paraBlockDispatchedTo')
 
-    if [ "$state" = -1 ]; then
+    if [ "$state" = "S_ERROR" -o "$height" = -1 ]; then
       restart "$uuid"
       workerArray[$key]=$(expr ${workerArray[$key]} + 1)
     else
