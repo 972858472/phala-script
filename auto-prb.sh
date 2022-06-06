@@ -27,7 +27,7 @@ function sendMail() {
 function isAlarm() {
   isErr=0
   #循环worker的错误次数数组
-  for errCount in $1; do
+  for errCount in ${echo $workerArray[*]}; do
     #是否有超过5次的worker
     if [ $errCount -gt 5 ]; then
       let isErr+=1
@@ -63,7 +63,7 @@ while true; do
     fi
   done
 
-  isAlarm ${workerArray[*]}
+  isAlarm
 
   #check every 60s
   for i in $(seq 60 -1 1); do
